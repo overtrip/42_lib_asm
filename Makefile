@@ -6,7 +6,7 @@
 #    By: jealonso <jealonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 13:30:18 by jealonso          #+#    #+#              #
-#    Updated: 2015/02/22 14:20:54 by jealonso         ###   ########.fr        #
+#    Updated: 2015/02/23 16:54:09 by jealonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS = \
 		ft_strequ.s \
 		ft_strcmp.s	\
 		ft_memchr.s \
-		ft_memalloc.s
+		ft_memalloc.s \
+		ft_atoi.s
 
 OBJS = $(SRCS:.s=.o)
 

@@ -6,7 +6,7 @@
 /*   By: jealonso <jealonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 13:30:51 by jealonso          #+#    #+#             */
-/*   Updated: 2015/02/21 18:07:30 by jealonso         ###   ########.fr       */
+/*   Updated: 2015/02/23 17:10:37 by jealonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,13 +350,23 @@ void	test_strequ(void)
 	printf("\t\"pouet/marche pas\" => %d\n",ft_strequ(str,str2));
 }
 
-/*int	test_atoi()
+int	test_atoi()
 {
-	char	str4[] = "-27";
+	char	str1[] = "-27";
+	char	str2[] = "+27	";
+	char	str3[] = "	15673433367822684";
+	char	str4[] = "-L27";
 
 	printf("\n\t\t========  Test ft_atoi.s =======\n\n");
-	printf("\t %s => %d\n", str4, ft_atoi(str4));
-}*/
+	printf("\t atoi(%s) => (%d)\n", str1, atoi(str1));
+	printf("\t ft_ato(%s) => (%d)\n", str1, ft_atoi(str1));
+	printf("\t atoi(%s) => (%d)\n", str2, atoi(str2));
+	printf("\t ft_ato(%s) => (%d)\n", str2, ft_atoi(str2));
+	printf("\t atoi(%s) => (%d)\n", str3, atoi(str3));
+	printf("\t ft_atoi(%s) => (%d)\n", str3, ft_atoi(str3));
+	printf("\t atoi(%s) => (%d)\n", str4, atoi(str4));
+	printf("\t ft_ato(%s) => (%d)\n", str4, ft_atoi(str4));
+}
 
 int	test_strcmp()
 {
@@ -412,11 +422,11 @@ int		main()
 	test_memset();
 	test_memcpy();
 	test_strdup();
-//	test_cat();
 	test_strequ();
-//	test_atoi();
+	test_atoi();
 	test_strcmp();
 	test_memchr();
 	test_memalloc();
+	test_cat();
 	return (0);
 }
