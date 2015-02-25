@@ -6,7 +6,7 @@
 #    By: jealonso <jealonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/29 13:30:18 by jealonso          #+#    #+#              #
-#    Updated: 2015/02/23 16:54:09 by jealonso         ###   ########.fr        #
+#    Updated: 2015/02/25 16:15:33 by jealonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,12 @@ $(NAME): $(OBJS)
 	$(RANLIB) $@
 
 %.o: %.s
-	$(ASM) $(AFLGS) $< -o $@
+	$(ASM) -ggdb $(AFLGS) $< -o $@
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f libft.a
+	rm -f libfts.a
 
 re: fclean all

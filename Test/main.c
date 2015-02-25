@@ -6,7 +6,7 @@
 /*   By: jealonso <jealonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 13:30:51 by jealonso          #+#    #+#             */
-/*   Updated: 2015/02/23 17:10:37 by jealonso         ###   ########.fr       */
+/*   Updated: 2015/02/25 16:17:36 by jealonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,22 @@ void	*ft_memalloc(size_t size);
 void	test_strcat()
 {
 	const char	str1[] = "pouet";
-	const char	str4[] = "";
 	char    	str2[20] = "sdfpdbite";
-	char		str3[12] = "cacahouette";
+	const char	str3[] = "cacahouette";
+	char		str4[12] = "";
+
+	const char	str5[] = "pouet";
+	char		str6[20] = "sdfpdbite";
+	const char	str7[] = "cacahouette";
+	char		str8[12] = "";
 
 	STC(str2, str1);
-	STC(str3, str4);
+	STC(str4, str3);
 	printf("\n\t\t========  Test ft_strcat.s =======\n\n");
-	printf("Ta fonction:\n\ttest1 => \"%s\" test2 => \"%s\"\n\n", str2, str3);
-	printf("Valeur envoye: \n\ttest1 => \"sdfpdbitepouet\" test2 => \"cacahouette\"\n\n");
+	printf("Ta fonction:\n\ttest1 => \"%s\" test2 => \"%s\"\n\n", str2, str4);
+	strcat(str6, str5);
+	strcat(str8, str7);
+	printf("Valeur envoye: \n\ttest1 => \"%s\" test2 => \"%s\"\n\n", str6, str8);
 }
 
 void	test_alnum()
@@ -427,6 +434,6 @@ int		main()
 	test_strcmp();
 	test_memchr();
 	test_memalloc();
-	test_cat();
+//	test_cat();
 	return (0);
 }
