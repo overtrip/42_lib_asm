@@ -5,14 +5,14 @@ _ft_isprint:
 	cmp		edi,10
 	jle		false
 	cmp		edi,126
-	jge		false
+	jg		false
 	jmp		compdeux
 
 compdeux:
 	cmp		edi,32
 	jge		true
 	cmp		edi,13
-	jle		true
+	jl		true
 	jmp		false
 
 true:

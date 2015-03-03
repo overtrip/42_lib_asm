@@ -6,7 +6,7 @@
 /*   By: jealonso <jealonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 13:30:51 by jealonso          #+#    #+#             */
-/*   Updated: 2015/02/25 16:17:36 by jealonso         ###   ########.fr       */
+/*   Updated: 2015/03/03 16:56:40 by jealonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <ctype.h>
 #define	ALN	ft_isalnum
 #define	ALP	ft_isalpha
 #define UP	ft_isupper
@@ -77,7 +78,7 @@ void	test_alnum()
 	printf("\n\t\t========  Test ft_isalnum.s =======\n\n");
 	printf("Ta fonction:\n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n",
 			ALN(49), ALN(108), ALN(19), ALN(65), ALN(90));
-	printf("Valeur envoye: \n\t1 =>(1), l =>(1), dc3 =>(0), A =>(1), Z =>(1)\n\n");
+	printf("Valeur envoye: \n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n", isalnum(49), isalnum(108), isalnum(19), isalnum(65), isalnum(90));
 
 }
 
@@ -86,7 +87,7 @@ void		test_alpha()
 	printf("\n\t\t========  Test ft_ft_isalpha.s =======\n\n");
 	printf("Ta fonction:\n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n",
 			ALP(49), ALP(108), ALP(19), ALP(65), ALP(90));
-	printf("Valeur envoye: \n\t1 =>(0), l =>(1), dc3 =>(0), A =>(1), Z =>(1)\n\n");
+	printf("Valeur envoye: \n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n", isalpha(49), isalpha(108), isalpha(19), isalpha(65), isalpha(90));
 }
 
 void		test_upper()
@@ -94,7 +95,7 @@ void		test_upper()
 	printf("\n\t\t========  Test ft_isupper.s =======\n\n");
 	printf("Ta fonction:\n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n",
 			UP(49), UP(108), UP(19), UP(65), UP(90));
-	printf("Valeur envoye: \n\t1 =>(0), l =>(0), dc3 =>(0), A =>(1), Z =>(1)\n\n");
+	printf("Valeur envoye: \n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n", isupper(49), isupper(108), isupper(19), isupper(65), isupper(90));
 }
 
 void		test_lower()
@@ -102,7 +103,7 @@ void		test_lower()
 	printf("\n\t\t========  Test ft_islower.s =======\n\n");
 	printf("Ta fonction:\n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n",
 			LO(49), LO(108), LO(19), LO(65), LO(90));
-	printf("Valeur envoye: \n\t1 =>(0), l =>(1), dc3 =>(0), A =>(0), Z =>(0)\n\n");
+	printf("Valeur envoye: \n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n", islower(49), islower(108), islower(19), islower(65), islower(90));
 
 }
 
@@ -111,7 +112,7 @@ void		test_digit()
 	printf("\n\t\t========  Test ft_isdigit.s =======\n\n");
 	printf("Ta fonction:\n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n",
 			DI(49), DI(108), DI(19), DI(65), DI(90));
-	printf("Valeur envoye: \n\t1 =>(1), l =>(0), dc3 =>(0), A =>(0), Z =>(0)\n\n");
+	printf("Valeur envoye: \n\t1 =>(%d), l =>(%d), dc3 =>(%d), A =>(%d), Z =>(%d)\n\n", isdigit(49), isdigit(108), isdigit(19), isdigit(65), isdigit(90));
 
 }
 
@@ -129,7 +130,7 @@ void		test_strlen()
 	printf("\t\"Pouet\" =>(%d)\n\n",
 			STL("pouet"));
 
-	printf("Valeur envoye: \n\t\"AbCdEfGhIjKlMnOpQrStUvWxYz\" =>(26),\n\t\"plop\" =>(4),\n\t\"bof, bof se test\" =>(16),\n\t\"Combien ca fait ca?\" =>(19),\n\t\"Pouet\" =>(5)\n\n");
+	printf("Valeur envoye: \n\t\"AbCdEfGhIjKlMnOpQrStUvWxYz\" =>(%ld),\n\t\"plop\" =>(%ld),\n\t\"bof, bof se test\" =>(%ld),\n\t\"Combien ca fait ca?\" =>(%ld),\n\t\"Pouet\" =>(%ld)\n\n", strlen("AbCdEfGhIjKlMnOpQrStUvWxYz"), strlen("plop"), strlen("bof, bof se test"), strlen("Combien ca fait ca?"), strlen("Pouet"));
 
 }
 
@@ -137,15 +138,14 @@ void		test_print()
 {
 	printf("\n\t\t========  Test ft_isprint.s =======\n\n");
 	printf("Ta fonction:\n\tspace =>(%d), ~ =>(%d), 3 =>(%d), vt =>(%d), del =>(%d)\n\n",
-			PR(32), PR(126), PR(51), PR(13), PR(127));
-	printf("Valeur envoye: \n\tspace =>(1), ~ =>(1), 3 =>(1), vt =>(1), del =>(0)\n\n");
+			PR(10), PR(126), PR(51), PR(13), PR(127));
+	printf("Valeur envoye: \n\tspace =>(%d), ~ =>(%d), 3 =>(%d), vt =>(%d), del =>(%d)\n\n", isprint(10),isprint(126), isprint(51), isprint(13), isprint(127));
 }
 
 void		test_puts()
 {
 	printf("\n\t\t========  Test ft_puts.s =======\n\n");
 	printf("Valeur envoye: \n\t\"asd\"\n\t\(void)\n\t\"12345\"\n\t\"pouet\"\n\t\"couin\"\n\t\"couin\"\n\t\"hippopotomonstrosesquippedaliophobie\"\n\n");
-
 	printf("Ta fonction:\n");
 	write(1,"\t",1);
 	PU("\"asd\"");
@@ -169,23 +169,23 @@ void		test_ascii()
 	printf("\n\t\t========  Test ft_isascii.s =======\n\n");
 	printf("Ta fonction:\n\tspace =>(%d), ~ =>(%d), 3 =>(%d), vt =>(%d), del =>(%d), (-16) =>(%d), (1337) =>(%d)\n\n",
 			AS(32), AS(126), AS(51), AS(13), AS(127), AS(-16), AS(1337));
-	printf("Valeur envoye: \n\tspace =>(1), ~ =>(1), 3 =>(1), vt =>(1), del =>(1), (-16) =>(0), (1337) =>(0)\n\n");
+	printf("Valeur envoye: \n\tspace =>(%d), ~ =>(%d), 3 =>(%d), vt =>(%d), del =>(%d), (-16) =>(%d), (1337) =>(%d)\n\n", isascii(32), isascii(126), isascii(51), isascii(13), isascii(127), isascii(-16), isascii(1337));
 }
 
 void		test_tolower()
 {
 	printf("\n\t\t========  Test ft_tolower.s =======\n\n");
-	printf("Ta fonction:\n\t46 =>(%d), 108 =>(%d), 19 =>(%d), 82 =>(%d), 90 =>(%d)\n\n",
+	printf("Ta fonction:\n\t46 =>(%c), 108 =>(%c), 19 =>(%c), 82 =>(%c), 90 =>(%c)\n\n",
 			TOL(46), TOL(108), TOL(19), TOL(82), TOL(90));
-	printf("Valeur envoye: \n\t46 =>(46), 108 =>(108), 19 =>(19), 82 =>(114), 90 =>(122)\n\n");
+	printf("Valeur envoye: \n\t46 =>(%c), 108 =>(%c), 19 =>(%c), 82 =>(%c), 90 =>(%c)\n\n", tolower(46), tolower(108), tolower(19), tolower(82), tolower(90));
 }
 
 void		test_toupper()
 {
 	printf("\n\t\t========  Test ft_toupper.s =======\n\n");
-	printf("Ta fonction:\n\t49 =>(%d), 108 =>(%d), 19 =>(%d), 82 =>(%d), 122 =>(%d)\n\n",
+	printf("Ta fonction:\n\t49 =>(%c), 108 =>(%c), 19 =>(%c), 82 =>(%c), 122 =>(%c)\n\n",
 			TOU(49), TOU(108), TOU(19), TOU(82), TOU(122));
-	printf("Valeur envoye: \n\t49 =>(49), 108 =>(76), 19 =>(19), 82 =>(82), 122 =>(90)\n\n");
+	printf("Valeur envoye: \n\t49 =>(%c), 108 =>(%c), 19 =>(%c), 82 =>(%c), 122 =>(%c)\n\n", toupper(49), toupper(108), toupper(19), toupper(82), toupper(122));
 }
 
 void		test_bzero()
@@ -316,7 +316,7 @@ void	test_strdup()
 	test_ft_strdup_sub(str, s1, s2);
 	strcpy(str, "toto");
 	test_ft_strdup_sub(str, s1, s2);
-	strcpy(str, "");
+//	strcpy(str, "");
 	test_ft_strdup_sub(str, s1, s2);
 	return ;
 }
@@ -357,7 +357,7 @@ void	test_strequ(void)
 	printf("\t\"pouet/marche pas\" => %d\n",ft_strequ(str,str2));
 }
 
-int	test_atoi()
+void	test_atoi()
 {
 	char	str1[] = "-27";
 	char	str2[] = "+27	";
@@ -373,9 +373,10 @@ int	test_atoi()
 	printf("\t ft_atoi(%s) => (%d)\n", str3, ft_atoi(str3));
 	printf("\t atoi(%s) => (%d)\n", str4, atoi(str4));
 	printf("\t ft_ato(%s) => (%d)\n", str4, ft_atoi(str4));
+
 }
 
-int	test_strcmp()
+void	test_strcmp()
 {
 	char	str1[] = "pouet";
 	char	str2[] = "lol";
@@ -386,7 +387,7 @@ int	test_strcmp()
 	printf("\t %s/%s => %d\n",str1, str1, ft_strcmp(str1,str1));
 }
 
-int	test_memalloc()
+void	test_memalloc()
 {
 
 	char	*str = ft_memalloc(8);
@@ -397,7 +398,7 @@ int	test_memalloc()
 	printf("\t str[NULL] %d\n", ft_strlen(str1));
 }
 
-int	test_memchr()
+void	test_memchr()
 {
 	char	str1[] = "pouet";
 

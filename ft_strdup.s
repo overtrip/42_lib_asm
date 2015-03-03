@@ -1,30 +1,25 @@
 segment .text
-	global _ft_strdup
-	extern _ft_strlen
-	extern _malloc
+    global  _ft_strdup
+    extern  _ft_strlen
+    extern  _malloc
 
 _ft_strdup:
-
-	mov		r13,rdi
-	call	_ft_strlen
-	inc		rax
-	mov		r12,rax
-	mov		rdi, rax
-	call	_malloc
-	test	rax,rax
-	jz		fail
-	mov		r14,rax
-	mov		rcx,r12
-	mov		rdi,r14
-	mov		rsi,r13
-	rep		movsb
+    mov     r12, rdi
+    call    _ft_strlen
+    inc     rax
+    mov     r13, rax
+    mov     rdi, rax
+    call    _malloc
+    cmp     rax, 0
+    je      done
+    mov     r10, rax
+    mov     rdi, rax
+    mov     rsi, r12
+    mov     rcx, r13
+    rep     movsb
+    mov     rdi, 0
+    mov     rax, r10
+    mov     rdi, r12
 
 done:
-
-	mov		rax,r14
-	ret
-
-fail:
-
-	mov		rax,0
-	jmp		done
+    ret
